@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+    <head>
+        <style>
+            form {
+                margin: 40px;
+            }
+
+            .input_field {
+                margin: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <!--Login-->
+        <form name="login" th:action="@{/login}" method="post">
+            <div class="input_field">
+                <label for="email" th:text="#{email}">Емайл</label>
+                <input name="email" id="email" type="email" th:placeholder="#{email}"/>
+            </div>
+            <div class="input_field">
+                <label for="password" th:text="#{password}">Парола</label>
+                <input name="password" id="password" type="password" th:placeholder="#{password}"/>
+            </div>
+            <div th:if="${error ne null}" th:text="#{incorrect.login}" class="input_field"></div>
+            <div class="input_field">
+                <input type="submit" th:value="#{login}" value="Вход"/>
+            </div>
+        </form>
+        <!--Registration-->
+        <form name="registration" th:action="@{/registration}" method="post">
+            <div class="input_field">
+                <label for="email_registration" th:text="#{email}"></label>
+                <input id="email_registration" name="email" type="email"/>
+            </div>
+            <div class="input_field">
+                <label for="password_registration" th:text="#{password}"></label>
+                <input id="password_registration" name="password" type="password"/>
+            </div>
+            <div class="input_field">
+                <input type="submit" th:value="#{registration}"/>
+            </div>
+        </form>
+    </body>
+</html>
