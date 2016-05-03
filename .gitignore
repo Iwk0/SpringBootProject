@@ -34,7 +34,7 @@
 
 # JIRA plugin
 atlassian-ide-plugin.xml
-
+*.iml
 .target
 
 # Crashlytics plugin (for Android Studio and IntelliJ)
