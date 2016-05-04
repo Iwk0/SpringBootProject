@@ -76,6 +76,12 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
+        <!--Mocking help for testing-->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.10.19</version>
+        </dependency>
     </dependencies>
 
     <properties>
