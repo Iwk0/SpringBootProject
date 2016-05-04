@@ -37,7 +37,7 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String index(@Valid @ModelAttribute("person") Person person, BindingResult result, RedirectAttributes attr) {
+    public String registration(@Valid @ModelAttribute("person") Person person, BindingResult result, RedirectAttributes attr) {
         if (result.hasErrors()) {
             log.error("Missing attribute in person object");
             attr.addFlashAttribute("org.springframework.validation.BindingResult.person", result);
