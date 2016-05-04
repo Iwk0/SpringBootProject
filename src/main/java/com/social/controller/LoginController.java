@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -28,22 +29,24 @@ public class LoginController {
             model.addAttribute("error", error);
         }
 
-        model.addAttribute("person", new Person());
+        if (!model.containsAttribute("person")) {
+            model.addAttribute("person", new Person());
+        }
 
         return "login";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String index(@Valid @ModelAttribute("person") Person person, BindingResult result, Model model) {
-        model.addAttribute("person", person);
-
+    public String index(@Valid @ModelAttribute("person") Person person, BindingResult result, RedirectAttributes attr) {
         if (result.hasErrors()) {
             log.error("Missing attribute in person object");
-            return "login";
+            attr.addFlashAttribute("org.springframework.validation.BindingResult.person", result);
+            attr.addFlashAttribute("person", person);
+            return "redirect:/login";
         }
 
         personRepository.save(person);
 
-        return "login";
+        return "redirect:/login";
     }
 }
