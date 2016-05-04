@@ -40,9 +40,6 @@ public class LoginController {
             return "redirect:/login";
         }
 
-        /*ShaPasswordEncoder sha = new ShaPasswordEncoder(256);
-        person.setPassword(sha.encodePassword(person.getPassword(), ""));*/
-
         personRepository.save(person);
 
         return "redirect:/login";
