@@ -1,6 +1,7 @@
 package com.social.validation;
 
 import com.social.model.Person;
+import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import javax.validation.ConstraintValidator;
@@ -16,6 +17,13 @@ public class MatchPasswordValidator implements ConstraintValidator<MatchPassword
 
     @Override
     public boolean isValid(Person person, ConstraintValidatorContext constraintValidatorContext) {
-        return person.getPassword().equals(person.getRawPassword());
+        String password = person.getPassword();
+        if (password.equals(person.getRawPassword())) {
+            ShaPasswordEncoder sha = new ShaPasswordEncoder(256);
+            person.setPassword(sha.encodePassword(password, ""));
+            return true;
+        }
+
+        return false;
     }
 }
