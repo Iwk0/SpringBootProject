@@ -29,7 +29,7 @@ public class Person extends ParentEntity {
     @Column
     @Getter
     @Setter
-    @Size(min = 3)
+    @Size
     private String surname;
 
     @Email

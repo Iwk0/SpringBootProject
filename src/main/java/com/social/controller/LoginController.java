@@ -1,7 +1,10 @@
 package com.social.controller;
 
 import com.social.model.Person;
+import com.social.repository.PersonRepository;
 import lombok.extern.log4j.Log4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,6 +18,9 @@ import javax.validation.Valid;
 @Log4j
 @Controller
 public class LoginController {
+
+    @Autowired
+    private PersonRepository personRepository;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(@RequestParam(value = "error", required = false) String error, Model model) {
@@ -34,6 +40,11 @@ public class LoginController {
             log.error("Missing attribute in person object");
             return "redirect:/login";
         }
+
+        ShaPasswordEncoder sha = new ShaPasswordEncoder(256);
+        person.setPassword(sha.encodePassword(person.getPassword(), ""));
+
+        personRepository.save(person);
 
         return "redirect:/login";
     }
