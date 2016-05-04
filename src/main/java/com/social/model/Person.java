@@ -59,7 +59,7 @@ public class Person extends ParentEntity {
     @Column
     @Getter
     @Setter
-    @Enumerated(EnumType.STRING)
+    @Enumerated(value = EnumType.STRING)
     private Status status = Status.ACTIVE;
 
     @Column
