@@ -1,0 +1,11 @@
+form {
+    margin: 40px;
+}
+
+label {
+    display: block;
+}
+
+.input_field {
+    margin: 10px;
+}
