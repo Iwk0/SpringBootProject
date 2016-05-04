@@ -28,6 +28,8 @@ public class LoginController {
             model.addAttribute("error", error);
         }
 
+        model.addAttribute("person", new Person());
+
         return "login";
     }
 
@@ -37,11 +39,11 @@ public class LoginController {
 
         if (result.hasErrors()) {
             log.error("Missing attribute in person object");
-            return "redirect:/login";
+            return "login";
         }
 
         personRepository.save(person);
 
-        return "redirect:/login";
+        return "login";
     }
 }

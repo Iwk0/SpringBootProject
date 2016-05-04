@@ -18,7 +18,8 @@ public class MatchPasswordValidator implements ConstraintValidator<MatchPassword
     @Override
     public boolean isValid(Person person, ConstraintValidatorContext constraintValidatorContext) {
         String password = person.getPassword();
-        if (password.equals(person.getRawPassword())) {
+        String rawPassword = person.getRawPassword();
+        if ((!password.isEmpty() || !rawPassword.isEmpty()) && password.equals(person.getRawPassword())) {
             ShaPasswordEncoder sha = new ShaPasswordEncoder(256);
             person.setPassword(sha.encodePassword(password, ""));
             return true;
