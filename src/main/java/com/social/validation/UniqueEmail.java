@@ -15,7 +15,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 public @interface UniqueEmail {
 
-    String message() default "UniqueEmail";
+    String message() default "{UniqueEmail}";
 
     Class<?>[] groups() default {};
 

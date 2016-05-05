@@ -5,7 +5,6 @@ import com.social.validation.UniqueEmail;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -16,13 +15,13 @@ public class Person extends ParentEntity {
 
     @Getter
     @Setter
-    @Size(min = 3)
+    @Size(min = 3, max = 40)
     @Column(name = "first_name")
     private String firstName;
 
     @Getter
     @Setter
-    @Size(min = 3)
+    @Size(min = 3, max = 40)
     @Column(name = "last_name")
     private String lastName;
 
@@ -35,6 +34,7 @@ public class Person extends ParentEntity {
     @Email
     @Getter
     @Setter
+    @Size(min = 3, max = 40)
     @UniqueEmail
     @Column(unique = true)
     private String email;
@@ -42,7 +42,7 @@ public class Person extends ParentEntity {
     @Column
     @Getter
     @Setter
-    @NotBlank
+    @Size(min = 6, max = 36)
     private String password;
 
     @Getter

@@ -16,7 +16,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 public @interface MatchPassword {
 
-    String message() default "MatchPassword";
+    String message() default "{MatchPassword}";
 
     Class<?>[] groups() default {};
 
