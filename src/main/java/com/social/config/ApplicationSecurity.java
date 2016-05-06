@@ -40,7 +40,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
                     .formLogin()
                     .usernameParameter("email")
                     .loginPage("/login")
-                    .defaultSuccessUrl("/", true)
+                    .defaultSuccessUrl("/")
                     .failureUrl("/login?error=1")
                 .and()
                     .logout()
