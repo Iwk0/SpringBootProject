@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Log4j
 @Controller
 public class HomeController {
-//ala bala portokala
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index() {
         return "index";
