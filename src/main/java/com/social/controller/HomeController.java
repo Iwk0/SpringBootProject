@@ -1,5 +1,6 @@
 package com.social.controller;
 
+import com.social.command.GoogleCommand;
 import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,8 @@ public class HomeController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index() {
+        GoogleCommand google = new GoogleCommand();
+        log.info(google.execute());
         return "index";
     }
 }
