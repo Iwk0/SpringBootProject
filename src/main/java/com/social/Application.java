@@ -1,6 +1,5 @@
 package com.social;
 
-import com.social.model.Person;
 import com.social.repository.PersonRepository;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,21 +28,13 @@ public class Application {
             }
 
             private void addUser() {
-                if (personRepository.findByEmail("ivomishev@gmail.com") != null) {
+                if (personRepository.findByEmail("email") != null) {
                     return;
                 }
 
                 ShaPasswordEncoder sha = new ShaPasswordEncoder(256);
 
-                Person person = new Person();
-                person.setFirstName("Иво");
-                person.setLastName("Мишев");
-                person.setEmail("ivomishev@gmail.com");
-                person.setPassword(sha.encodePassword("abv123", ""));
-                person.setRole(Person.Role.ADMIN);
-                person.setStatus(Person.Status.ACTIVE);
-                person.setUniqueName("ivo.mishev");
-                personRepository.save(person);
+                //potrebitel
             }
         };
     }
